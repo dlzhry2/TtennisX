@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    What's Hot
+{% endblock %}
+
+{% block main %}
+    <h2>What's hot?
+    <small class="text-muted">In the world of table tennis</small>
+    </h2><br><br>
+    <h4 id="fancy">Power Rankings:</h4><br>
+    <form action="/" method="post">
+      <div class = "form-group">
+         <select class="form-control" name="gender">
+                <option disable selected value>Gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+        </select> <select class="form-control" name="year">
+                <option disable selected value>Year</option>
+                {% for y in range(z) %}
+                <option value="{{ x[y] }}">{{ x[y] }}</option>
+                {% endfor %}
+                </select> <input class="form-control" autocomplete="off" class="form-control" max='200' name='topx' placeholder="Show top" type='number'>
+                </div>
+        <button class="btn btn-dark" type="submit">Search</button>
+    </form><br><br>
+    <div>
+        <p>For the latest table tennis news visit the <a href="https://www.ittf.com/news/">ITTF website</a>.</p>
+    </div>
+{% endblock %}

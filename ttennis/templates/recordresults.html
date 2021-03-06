@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Record Results
+{% endblock %}
+
+{% block main %}
+    <h2>Record Results</h2><br>
+    <form action="/recordresults" method="POST">
+        <div class="form-group">
+            <select class="form-control" name="league">
+                <option disable selected value>Select League</option>
+                {% for y in range(x) %}
+                <option value="{{ (leagues[y]['id']) }}">{{ (leagues[y]['name']) }} {{ (leagues[y]['startyear']) }}-{{ (leagues[y]['endyear']) }}</option>
+                {% endfor %}
+            </select>
+        </div>
+         <button class="btn btn-dark" type="submit">Confirm</button>
+    </form>
+{% endblock %}

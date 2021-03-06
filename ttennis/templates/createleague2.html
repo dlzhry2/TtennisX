@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Create League
+{% endblock %}
+
+{% block main %}
+    <a id="createbutton" class="btn btn-danger" href="/leagues">View Leagues</a><br><br>
+    <h2>New League</h2><br>
+    <form action="/createleague" method="POST">
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" name="name" placeholder="League Name" maxlength="400" type="text">
+            <label for="startyear">Start Year</label>
+            <input autocomplete="off" class="form-control" name="startyear" max="2500" min="0" placeholder="YYYY" type='number'>
+            <label for="endyear">End Year</label>
+            <input autocomplete="off" class="form-control" name="endyear" max="2500" min="0" placeholder="YYYY" type='number'>
+            <label for="playernumber">Number of Players</label>
+            <select class="form-control" name="playernumber">
+                <option value="{{ nplayers }}" selected>{{ nplayers }}</option>
+            </select>
+        </div>
+        {% for y in range(nplayers) %}
+        <div>
+        <select class="form-control" name="player{{ y }}">
+            <option disable selected value>Player {{ (y+1) }}</option>
+            {% for z in range(x) %}
+            <option value="{{ (players[z]['name']) }}">{{ (players[z]['name']) }}</option>
+            {% endfor %}
+        </select>
+        </div>
+        {% endfor %}
+        <br>
+        <button class="btn btn-dark" type="submit">Confirm</button>
+        </form>
+{% endblock %}

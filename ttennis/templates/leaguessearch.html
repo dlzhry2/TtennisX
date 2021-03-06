@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Leagues
+{% endblock %}
+
+{% block main %}
+    <a id="createbutton" class="btn btn-danger" href="/createleague">Create New League</a><br><br>
+    <form action="/leagues" method="post">
+        <div class="form-group">
+            <select class="form-control" name="league">
+                <option disable selected value>Select League</option>
+                {% for y in range(x) %}
+                <option value="{{ (leagues[y]['id']) }}">{{ (leagues[y]['name']) }} {{ (leagues[y]['startyear']) }}-{{ (leagues[y]['endyear']) }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <button class="btn btn-dark" type="submit">Search</button>
+    </form><br>
+    <h5>Showing {{ (leaguetitle[0]['name']) }} {{ (leaguetitle[0]['startyear']) }}-{{ (leaguetitle[0]['endyear']) }}</h5><br>
+    <table class="table table-striped table-dark">
+        <thead>
+            <tr>
+                <th>Player</th>
+                <th>Games Played</th>
+                <th>Won</th>
+                <th>Lost</th>
+                <th>pf</th>
+                <th>pa</th>
+                <th>pd +/-</th>
+                <th id='tablebold'>Points</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for z in range(w) %}
+            <tr>
+                <td>{{ (leaguetable[z]['playername']) }}</td>
+                <td>{{ (leaguetable[z]['gamesplayed']) }}</td>
+                <td>{{ (leaguetable[z]['gameswon']) }}</td>
+                <td>{{ (leaguetable[z]['gameslost']) }}</td>
+                <td>{{ (leaguetable[z]['pf']) }}</td>
+                <td>{{ (leaguetable[z]['pa']) }}</td>
+                <td>{{ (leaguetable[z]['pd']) }}</td>
+                <td id='tablebold'>{{ (leaguetable[z]['points']) }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

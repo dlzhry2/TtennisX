@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Players
+{% endblock %}
+
+{% block main %}
+    <a id="createbutton" class="btn btn-danger" href="/createplayers">Create New Players</a><br><br>
+    <form action="/players" method="post">
+      <div class = "form-group">
+         <select class="form-control" name="filter">
+                <option disable selected value>Order By</option>
+                <option value="name">Name</option>
+                <option value="dob">DOB</option>
+                <option value="games">Games Played</option>
+                <option value="wins">Wins</option>
+                <option value="losses">Losses</option>
+                <option value="winratio">Win Ratio</option>
+          </select> <button class="btn btn-dark" type="submit">Set</button>
+      </div>
+     </form><br>
+     <table class="table table-striped table-dark">
+         <thead>
+             <tr>
+                 <th>Name</th>
+                 <th>Gender</th>
+                 <th>DOB</th>
+                 <th>Games</th>
+                 <th>Wins</th>
+                 <th>Losses</th>
+                 <th>Win Ratio</th>
+             </tr>
+         </thead>
+         <tbody>
+             {% for y in range(x) %}
+             <tr>
+                 <td>{{ (players[y]['name']) }}</td>
+                 <td>{{ (players[y]['gender']) }}</td>
+                 <td>{{ (players[y]['dob']) }}</td>
+                 <td>{{ (players[y]['games']) }}</td>
+                 <td>{{ (players[y]['wins']) }}</td>
+                 <td>{{ (players[y]['losses']) }}</td>
+                 <td>{{ (players[y]['winratio']) }}</td>
+             </tr>
+             {% endfor %}
+        </tbody>
+     </table>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Create Players
+{% endblock %}
+
+{% block main %}
+    <a id="createbutton" class="btn btn-danger" href="/players">View Players</a><br><br>
+    <h2>New Player</h2><br>
+    <form action="/createplayers" method="post">
+        <div class="form-group">
+            <input autocomplete="off" class="form-control" name="name" placeholder="Name" type="text" maxlength="245">
+            <select class="form-control" name="gender">
+                <option disable selected value>Gender</option>
+                <option value="M">M</option>
+                <option value="F">F</option>
+            </select>
+            <label for="dob">DOB (dd/mm/yyyy): </label>
+            <input autocomplete="off" class="form-control" name="dob" placeholder="DOB" type="date">
+        </div>
+        <button class="btn btn-dark" type="submit">Confirm</button>
+    </form>
+{% endblock %}

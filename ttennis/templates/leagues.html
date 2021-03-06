@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Leagues
+{% endblock %}
+
+{% block main %}
+<a id="createbutton" class="btn btn-danger" href="/createleague">Create New League</a><br><br>
+    <form action="/leagues" method="post">
+        <div class="form-group">
+            <select class="form-control" name="league">
+                <option disable selected value>Select League</option>
+                {% for y in range(x) %}
+                <option value="{{ (leagues[y]['id']) }}">{{ (leagues[y]['name']) }} {{ (leagues[y]['startyear']) }}-{{ (leagues[y]['endyear']) }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <button class="btn btn-dark" type="submit">Search</button>
+    </form>
+{% endblock %}

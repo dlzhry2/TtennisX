@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Create League
+{% endblock %}
+
+{% block main %}
+    <a id="createbutton" class="btn btn-danger" href="/leagues">View Leagues</a><br><br>
+    <h2>New League</h2><br>
+    <form action="/createleague" method="POST">
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" name="playersnumber" placeholder="Number of players" type="number" max="50">
+        </div>
+        <button class="btn btn-dark" type="submit">Confirm</button>
+    </form>
+{% endblock %}

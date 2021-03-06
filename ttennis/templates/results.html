@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    View Results
+{% endblock %}
+
+{% block main %}
+    <h2>View Results</h2><br>
+    <form action="/viewresults" method="POST">
+        <div class="form-group">
+            <label for='league'>Filter by: </label>
+            <select class="form-control" name="league">
+                <option disable selected value>Select League</option>
+                {% for y in range(x) %}
+                <option value="{{ (leagues[y]['id']) }}">{{ (leagues[y]['name']) }} {{ (leagues[y]['startyear']) }}-{{ (leagues[y]['endyear']) }}</option>
+                {% endfor %}
+            </select>
+        </div>
+         <button class="btn btn-dark" type="submit">Set</button>
+    </form><br>
+    <h5>Showing all results</h5><br>
+    {% for y in range(z) %}
+    <table class="table table-sm table-striped table-dark">
+        <thead>
+            <tr>
+                <th>{{ (names[y]) }} {{ (results[y]['date']) }}</th>
+                <th>Player</th>
+                <th>Sets</th>
+                <th>Game 1</th>
+                <th>Game 2</th>
+                <th>Game 3</th>
+                <th>Game 4</th>
+                <th>Game 5</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td></td>
+                <td {% if (results[y]['p1set']) > (results[y]['p2set']) %} id= "tablebold" {% endif %}>{{ (results[y]['player1']) }}</td>
+                <td {% if (results[y]['p1set']) > (results[y]['p2set']) %} id= "tablebold" {% endif %}>{{ (results[y]['p1set']) }}</td>
+                <td>{{ (results[y]['p1g1']) }}</td>
+                <td>{{ (results[y]['p1g2']) }}</td>
+                <td>{{ (results[y]['p1g3']) }}</td>
+                <td>{{ (results[y]['p1g4']) }}</td>
+                <td>{{ (results[y]['p1g5']) }}</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td {% if (results[y]['p1set']) < (results[y]['p2set']) %} id= "tablebold" {% endif %}>{{ (results[y]['player2']) }}</td>
+                <td {% if (results[y]['p1set']) < (results[y]['p2set']) %} id= "tablebold" {% endif %}>{{ (results[y]['p2set']) }}</td>
+                <td>{{ (results[y]['p2g1']) }}</td>
+                <td>{{ (results[y]['p2g2']) }}</td>
+                <td>{{ (results[y]['p2g3']) }}</td>
+                <td>{{ (results[y]['p2g4']) }}</td>
+                <td>{{ (results[y]['p2g5']) }}</td>
+            </tr>
+        </tbody>
+        </table>
+        {% endfor %}
+{% endblock %}
