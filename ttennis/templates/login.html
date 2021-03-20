@@ -7,10 +7,18 @@
 {% block main %}
     <form action="/login" method="post">
         <div class="form-group">
-            <input autocomplete="off" autofocus class="form-control" name="username" placeholder="Username" type="text">
+            {% if username %}
+                <input autocomplete="off" class="form-control" value = "{{ username }}" name="username" placeholder="Username" type="text">
+            {% else %}
+                <input autocomplete="off" autofocus class="form-control" name="username" placeholder="Username" type="text">
+            {% endif %}
         </div>
         <div class="form-group">
-            <input class="form-control" name="password" placeholder="Password" type="password">
+            {% if username %}
+                <input class="form-control" name="password" placeholder="Password" type="password" autofocus>
+            {% else %}
+                <input class="form-control" name="password" placeholder="Password" type="password">
+            {% endif %}
         </div>
         <button class="btn btn-primary" type="submit">Log In</button>
     </form>
